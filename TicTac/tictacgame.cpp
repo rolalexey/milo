@@ -212,30 +212,83 @@ bool TicTacGame::checkWinPossible(const WinLine &line, Cell::State player)
 void TicTacGame::ai_move()
 {
     auto field = fieldState();
+    int danger[8] = {};
+    int winner[8] = {};
+    int idx(-1);
 
     // first try to make win moves
+    int i = 0;
     foreach(const WinLine &wl, m_winlines)
     {
+        // first check enemy winlines
+        auto canlose = checkWinPossible(wl, Cell::Xed);
+        if(canlose)
+        {
+            if( field[ std::get<0>(wl) ] == Cell::Xed)
+                danger[i]++;
+            if( field[ std::get<1>(wl) ] == Cell::Xed)
+                danger[i]++;
+            if( field[ std::get<2>(wl) ] == Cell::Xed)
+                danger[i]++;
+        }
+
         auto canwin = checkWinPossible(wl, Cell::Oed);
         if(canwin)
         {
-            int idx = std::get<0>(wl);
-            if( field[ idx ] != Cell::Free )
-                idx = std::get<1>(wl);
-            if( field[ idx ] != Cell::Free )
-                idx = std::get<2>(wl);
-
-            clickCell(idx);
-            return;
+            if( field[ std::get<0>(wl) ] == Cell::Xed)
+                winner[i]++;
+            if( field[ std::get<1>(wl) ] == Cell::Xed)
+                winner[i]++;
+            if( field[ std::get<2>(wl) ] == Cell::Xed)
+                winner[i]++;
         }
+        i++;
     }
+
+    // danger/winner line indexes
+    int d_idx(0), w_idx(0), d_max(0), w_max(0);
+    int res_line;
+
+
+    for(i=0; i<8; i++)
+    {
+        if(danger[i] > d_max)    { d_idx = i; d_max = danger[i]; }
+        if(winner[i] > w_max)    { w_idx = i; w_max = winner[i]; }
+
+        qDebug()<< "i=" << i << "didx" << d_idx << danger[i];
+    }
+
+    qDebug() << "didx" << d_idx;
+
+    if(danger[d_idx] > winner[w_idx])
+        res_line = d_idx;
+    else {
+        res_line = w_idx;
+    }
+
+//    res_line = d_idx;
+
+
+    idx = std::get<0>(m_winlines[res_line]);
+    if( field[ idx ] != Cell::Free )
+        idx = std::get<1>(m_winlines[res_line]);
+    if( field[ idx ] != Cell::Free )
+        idx = std::get<2>(m_winlines[res_line]);
+
+    qDebug()<< "winline" << res_line << "idx" << idx
+            << "dangerline" << d_idx << danger[d_idx]
+//               << "winnerline" << w_idx << winner[w_idx]
+               ;
+    clickCell(idx);
+    return;
+
     // then any possible
-    for(int i=0; i<field.size(); i++)
-        if( field[i] == Cell::Free)
-        {
-            clickCell(i);
-            return;
-        }
+//    for(int i=0; i<field.size(); i++)
+//        if( field[i] == Cell::Free)
+//        {
+//            clickCell(i);
+//            return;
+//        }
 
 }
 
