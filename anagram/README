@@ -10,5 +10,5 @@ data/   contains two dictionaries    full webster-dictionary.txt (300000 real wo
         anagram search run in separate thread leaving UI unblocked.
 
 
-
+	;-)
         Oleksii Aleksieiev
