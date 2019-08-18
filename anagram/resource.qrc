@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="stop">images/stop.png</file>
+        <file alias="lookup">images/view.png</file>
+        <file alias="import">images/import1.png</file>
+        <file alias="search">images/view_next.png</file>
+    </qresource>
+</RCC>

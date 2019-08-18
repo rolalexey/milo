@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/board.png</file>
+        <file>images/o.png</file>
+        <file>images/x.png</file>
+        <file alias="win_0.png">images/win_0.png</file>
+        <file alias="win_1.png">images/win_1.png</file>
+        <file alias="win_2.png">images/win_2.png</file>
+        <file alias="win_3.png">images/win_3.png</file>
+        <file alias="win_4.png">images/win_4.png</file>
+        <file alias="win_5.png">images/win_5.png</file>
+        <file alias="win_6.png">images/win_6.png</file>
+        <file alias="win_7.png">images/win_7.png</file>
+        <file alias="board.png">images/board_2.png</file>
+        <file alias="o.png">images/o_2.png</file>
+        <file alias="x.png">images/x_2.png</file>
+        <file>Cell.qml</file>
+    </qresource>
+</RCC>
