@@ -50,3 +50,6 @@ RC_FILE = win.rc
 RESOURCES += \
     resource.qrc
 
+DISTFILES += \
+    README
+

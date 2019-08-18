@@ -1,0 +1,14 @@
+
+data/   contains two dictionaries    full webster-dictionary.txt (300000 real words)
+        and  webster-small.txt  (~20000 words)
+
+        program skip separated by ' ' and '-' multiwords
+
+        webster-small.txt is quite enough to test
+        anagram chain derived from 'ail' start word.
+
+        anagram search run in separate thread leaving UI unblocked.
+
+
+
+        Oleksii Aleksieiev
