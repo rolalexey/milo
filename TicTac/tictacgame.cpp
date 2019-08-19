@@ -235,11 +235,11 @@ void TicTacGame::ai_move()
         auto canwin = checkWinPossible(wl, Cell::Oed);
         if(canwin)
         {
-            if( field[ std::get<0>(wl) ] == Cell::Xed)
+            if( field[ std::get<0>(wl) ] == Cell::Oed)
                 winner[i]++;
-            if( field[ std::get<1>(wl) ] == Cell::Xed)
+            if( field[ std::get<1>(wl) ] == Cell::Oed)
                 winner[i]++;
-            if( field[ std::get<2>(wl) ] == Cell::Xed)
+            if( field[ std::get<2>(wl) ] == Cell::Oed)
                 winner[i]++;
         }
         i++;
